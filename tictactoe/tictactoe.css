@@ -1,0 +1,63 @@
+.board {
+    display: grid; /* Creating a grid layout */
+    grid-template-columns: repeat(5, 1fr); /* Creates a 5x5 grid */
+    margin: 20px auto; /* Centering the grid */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cell {
+    background-color: #160a45;
+    border: 1px solid #282828;
+    font-size: 38px; /* Smaller font size for a 5x5 grid */
+    font-weight: bold;
+    cursor: pointer;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px; /* Smaller height for a 5x5 grid */
+    color: white;
+    position: relative;
+}
+
+/* Neon red shadow style */
+.cell.red {
+    text-shadow: 
+        0 0 5px #ff3333, 
+        0 0 10px #ff3333, 
+       /* 0 0 20px #ff1a1a, 
+        0 0 40px #ff1a1a, */
+        0 0 80px #ff1a1a; /* Multiple layers of glow for a neon red effect */
+}
+
+/* Neon blue shadow style */
+.cell.blue {
+    text-shadow: 
+        0 0 5px #1a8cff, 
+        0 0 10px #1a8cff, 
+      /*  0 0 20px #3399ff, 
+        0 0 40px #3399ff, */
+        0 0 80px #3399ff; /* Multiple layers of glow for a neon blue effect */
+}
+
+.resultDisplay {
+    font-size: 28px;
+    margin: 20px;
+}
+
+.border-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); 
+    background-color: #fff;
+    border: 5px solid #fff;
+    border-radius: 10px;
+    box-shadow:
+        0 0 5px #9a00ff, 
+        0 0 15px #9a00ff, 
+        0 0 30px #9a00ff inset, 
+        0 0 60px #9a00ff inset,
+        0 0 30px #9a00ff, 
+        0 0 60px #9a00ff;
+}

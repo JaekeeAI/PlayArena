@@ -1,0 +1,190 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.main-content {
+    position: relative;
+    background: hsl(238, 100%, 6%);
+    padding-block: 6rem;
+    min-height: 100%;  /* Ensure it covers at least the viewport height */
+}
+
+.parallax {
+    position: relative;
+    z-index: 0;
+    min-height: 75vh;
+    display: grid;
+    grid-template-areas: "stack";
+}
+
+.parallax > * {
+    grid-area: stack;
+    animation: parallax linear;
+    animation-timeline: scroll();
+}
+
+.parallax > img {
+    width: 100%;
+}
+
+.primary-header, .hero {
+    --parallax-speed: 10;
+    z-index: 10;
+}
+
+.parallax__bg,
+.parallax__dust,
+.parallax__luna,
+.parallax__manny,
+.parallax__jax,
+.parallax__rays {
+    z-index: 1; /* adjusted z-index for all to ensure stacking order */
+    min-height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.parallax__foreground-front,
+.parallax__foreground-back {
+    z-index: 999;
+    align-self: end;
+}
+
+.parallax__foreground-back {
+    transform: scaleY(1.2);
+    transform-origin: bottom;
+    mix-blend-mode: hard-light;
+}
+
+.parallax__foreground-back {
+    transform: scaleY(1.2);
+    transform-origin: bottom;
+    mix-blend-mode: hard-light;
+}
+
+.main-content {
+    position: relative;
+    background: hsl(238, 100%, 6%);
+    padding-block: 6rem;
+}
+
+@keyframes parallax {
+    to {
+        transform: translateY(calc(var(--parallax-speed) * 200px));
+    }
+}
+
+/* general styling */
+
+html {
+    color-scheme: dark;
+}
+
+body {
+    margin: 0;
+    font-family: "Rubik", sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700; /* retained for demo only */
+    text-transform: uppercase; /* retained for demo only */
+    min-height: 300vh; /* retained for demo only */
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+.game {
+    width: 100%;
+    margin-bottom: 80px;
+    position: relative; /* Set position relative for positioning text absolutely */
+}
+
+.game img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 50px;
+}
+
+.image-text {
+    position: absolute;
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Align the center of the text with the center of the div */
+    color: white; /* Text color */
+    font-size: 125px; /* Text size */
+    font-weight: 900;
+    text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.75); /* Text shadow for better readability */
+    z-index: 10; /* Ensure the text is above the image */
+}
+
+.wrapper {
+    width: min(65rem, 100% - 4rem);
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.primary-header {
+    padding-block: 2rem;
+}
+
+.primary-header__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.primary-nav ul {
+    flex: 1;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+}
+
+.primary-nav a {
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.hero {
+    margin-block-start: max(20vh, 8rem);
+}
+
+.hero__title {
+    font-size: 6rem;
+    max-width: 10ch;
+    line-height: 1;
+    font-style: italic;
+    font-weight: 900;
+    position: relative;
+
+    > span {
+        font-style: normal;
+        font-size: 0.5em;
+        display: block;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: black;
+        z-index: -1;
+        scale: 2;
+        opacity: 0.5;
+        filter: blur(5rem);
+        translate: -50%;
+    }
+}
+
+

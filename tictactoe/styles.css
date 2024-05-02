@@ -1,0 +1,35 @@
+/* Basic reset to remove default margins and padding */
+body, header, footer {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center; /* Aligns children (content) in the center horizontally */
+    width: 100%; /* Ensures full width */
+}
+
+body {
+    flex-direction: column; /* Stacks children vertically */
+    min-height: 100vh; /* Full viewport height */
+    align-items: center; /* Aligns children in the center horizontally */
+    background: linear-gradient(to bottom, #250754, #3e085e, #85107d); /* Gradient from dark purple to red */
+}
+
+header, footer {
+    text-align: center; /* Centers text inside header and footer */
+    width: 100%; /* Full width of the container */
+    padding: 20px 0; /* Padding for visual spacing */
+    color: white; /* Text color for visibility */
+}
+
+/* Optional: Adjust the styles below to suit your design needs */
+.header a, .footer p {
+    color: white; /* Ensuring links and text in footer are visible */
+}
+
+#difficultySelection {
+    margin: 30px;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
