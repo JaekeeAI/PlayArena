@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- import google font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    
     <link href="./wordle.css" rel="stylesheet">
-    <title>Document</title>
+    <script src="./wordle.js"></script>
+    <title>Wordle</title>
 </head>
 <body>
-    <header>
-
-    </header>
+    <button id="back-btn" onclick="window.location.href = '../main.html'">Back</button>
     <main>
-        <button id="back-btn" onclick="window.location.href = '../main.html'">Back</button>
-        <h1>
-            Wordle
-        </h1>
+        <h1>Wordle</h1>
+
+        <!-- these two divs function as user menu -->
         <div class="menu-bar">
             <button>reset</button>
             <button>reveal</button>
@@ -29,9 +29,14 @@
             <input type="radio" name="word-length" id="l6" value="6"> 6
         </div>
         
+        <!-- javascript will populate the container with a grid 
+        of cells that represent the letters the user type in -->
         <div class="container">
 
         </div>
+
+        <!-- the game result text, cleared when the game is running -->
+        <p id="game-result"></p>
 
         <div class="keyboard">
             <div class="row">
@@ -70,11 +75,5 @@
             </div>
         </div>
     </main>
-    <footer>
-
-    </footer>
-    <script src="./wordle.js">
-        
-    </script>
 </body>
 </html>
