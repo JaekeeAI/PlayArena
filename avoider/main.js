@@ -5,24 +5,51 @@ const playerCells = cells.slice(30);
 const scoreDisplay = document.querySelector(".score");
 
 let dropCount, speed, score;
+let touchStartX = 0;
+let touchEndX = 0;
 
 reset();
 
-document.addEventListener("keydown", e => {
+document.addEventListener("keydown", handleKeyDown);
+document.addEventListener("touchstart", handleTouchStart);
+document.addEventListener("touchend", handleTouchEnd);
+
+function handleKeyDown(e) {
     if (!dropCount) {
         startGame();
     }
 
+    movePlayer(e.key);
+}
+
+function handleTouchStart(e) {
+    touchStartX = e.changedTouches[0].screenX;
+}
+
+function handleTouchEnd(e) {
+    touchEndX = e.changedTouches[0].screenX;
+    handleGesture();
+}
+
+function handleGesture() {
+    if (touchEndX < touchStartX) {
+        movePlayer("ArrowLeft");
+    } else if (touchEndX > touchStartX) {
+        movePlayer("ArrowRight");
+    }
+}
+
+function movePlayer(direction) {
     const player = document.querySelector(".player");
 
-    if (e.key === "ArrowRight" && playerCells.includes(player.parentElement.nextElementSibling)) {
+    if (direction === "ArrowRight" && playerCells.includes(player.parentElement.nextElementSibling)) {
         player.parentElement.nextElementSibling.appendChild(player);
     }
 
-    if (e.key === "ArrowLeft" && playerCells.includes(player.parentElement.previousElementSibling)) {
+    if (direction === "ArrowLeft" && playerCells.includes(player.parentElement.previousElementSibling)) {
         player.parentElement.previousElementSibling.appendChild(player);
     }
-});
+}
 
 function reset() {
     dropCount = 0;
@@ -68,7 +95,6 @@ function loop() {
     // Even drop count, add new enemy
     if (dropCount % 2 === 0) {
         const position = Math.floor(Math.random() * 3);
-
         enemyCells[position].innerHTML = '<div class="enemy"></div>';
     }
 
