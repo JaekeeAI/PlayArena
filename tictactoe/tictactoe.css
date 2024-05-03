@@ -1,27 +1,23 @@
 .board {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 0; /* No gap between cells */
+    grid-template-columns: repeat(5, 1fr); /* Creates a 5x5 grid */
     margin: 20px auto; /* Centering the grid */
+    display: flex;
     align-items: center;
     justify-content: center;
-    display: flex;
 }
 
 .cell {
-    margin: 0; /* Reset any margin */
-    padding: 0; /* Reset any padding */
-    border: 1px solid #282828;
-    width: 100%;
-    aspect-ratio: 1 / 1;
     background-color: #160a45;
-    color: white;
-    font-size: 38px;
+    border: 1px solid #282828;
+    font-size: 38px; /* Smaller font size for a 5x5 grid */
     font-weight: bold;
+    cursor: pointer;
+    aspect-ratio: 1 / 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
+    height: 80px; /* Smaller height for a 5x5 grid */
+    color: white;
 }
 
 /* Neon red shadow style */
@@ -67,6 +63,6 @@
 @media (max-width: 768px) {
     .cell {
         font-size: 21px; /* Adjusting font size for smaller screens */
-        height: auto; /* Adjusting height for smaller screens */
+        height: 50px; /* Adjusting height for smaller screens */
     }
 }
