@@ -1,6 +1,5 @@
 /* Basic reset to remove default margins and padding */
 body, header, footer {
-    margin: 0;
     display: flex;
     justify-content: center; /* Aligns children (content) in the center horizontally */
     width: 100%; /* Ensures full width */

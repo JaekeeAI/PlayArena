@@ -5,6 +5,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 0;
 }
 
 .cell {
@@ -19,7 +20,6 @@
     justify-content: center;
     height: 80px; /* Smaller height for a 5x5 grid */
     color: white;
-    position: relative;
 }
 
 /* Neon red shadow style */
@@ -62,7 +62,7 @@
         0 0 60px #9a00ff;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
     .cell {
         font-size: 21px; /* Adjusting font size for smaller screens */
         height: 50px; /* Adjusting height for smaller screens */
