@@ -23,7 +23,6 @@ footer {
     text-align: center;
 }
 
-
 h1 {
   font-size: 80px;
   line-height: 0.7;
@@ -102,9 +101,6 @@ h1 {
     margin-top: 5px;
 }
 
-
-
-
 .instructions {
     display: flex;
     justify-content: space-between;
@@ -127,8 +123,6 @@ h1 {
     background-color: #a47e68;
 }
   
-
-
 /* CSS classes for different numbers */
 .grid div[data-value=""] {
   background-color: #cdc1b4;
@@ -199,8 +193,6 @@ h1 {
   color: white;
   font-size: 35px;
 }
-
-
 
 .game-container .game-message {
     display: none;
@@ -280,7 +272,8 @@ h1 {
 
     h1 {
         font-size: 50px;
-      }
+    }
+
     .container {
         width: 320px;
     }
@@ -296,48 +289,71 @@ h1 {
     }
 
     .grid div[data-value="2"] {
-        font-size: 35px;
-      }
-      
-      .grid div[data-value="4"] {
-        font-size: 35px;
-      }
-      
-      .grid div[data-value="8"] {
-        font-size: 35px;
-      }
-      
-      .grid div[data-value="16"] {
-        font-size: 35px;
-      }
-      
-      .grid div[data-value="32"] {
-        font-size: 35px;
-      }
-      
-      .grid div[data-value="64"] {
-        font-size: 35px;
-      }
-      
-      .grid div[data-value="128"] {
-        font-size: 25px;
-      }
-      
-      .grid div[data-value="256"] {
-        font-size: 25px;
-      }
-      
-      .grid div[data-value="512"] {
-        font-size: 25px;
-      }
-      
-      .grid div[data-value="1024"] {
-        font-size: 15px;
-      }
-      
-      .grid div[data-value="2048"] {
-        font-size: 15px;
-      }
+    font-size: 35px;
+    }
+    
+    .grid div[data-value="4"] {
+    font-size: 35px;
+    }
+    
+    .grid div[data-value="8"] {
+    font-size: 35px;
+    }
+    
+    .grid div[data-value="16"] {
+    font-size: 35px;
+    }
+    
+    .grid div[data-value="32"] {
+    font-size: 35px;
+    }
+    
+    .grid div[data-value="64"] {
+    font-size: 35px;
+    }
+    
+    .grid div[data-value="128"] {
+    font-size: 25px;
+    }
+    
+    .grid div[data-value="256"] {
+    font-size: 25px;
+    }
+    
+    .grid div[data-value="512"] {
+    font-size: 25px;
+    }
+    
+    .grid div[data-value="1024"] {
+    font-size: 15px;
+    }
+    
+    .grid div[data-value="2048"] {
+    font-size: 15px;
+    }
+
+    #back-btn {
+        font-size: 12px;
+    }
+}
+
+#back-btn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #8f7a66;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    box-sizing: border-box;
+    font-weight: bold;
+    padding: 5px 10px;
+    cursor: pointer;
+    z-index: 10; /* Ensure it's above other elements */
+}
+
+#back-btn:hover {
+    background-color: #a47e68;
 }
 
 

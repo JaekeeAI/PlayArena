@@ -85,3 +85,31 @@ header, footer {
     background-color: #1f064d;
 }
 
+#back-btn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #160a45; /* Set the button's background to match the cells */
+    color: white;
+    border: none;
+    border-radius: 3px;
+    box-sizing: border-box;
+    font-weight: bold;
+    padding: 5px 10px;
+    cursor: pointer;
+    z-index: 10; /* Ensure it's above other elements */
+    text-shadow: 
+        0 0 5px #9a00ff, 
+        0 0 10px #9a00ff, 
+        0 0 20px #9a00ff, 
+        0 0 30px #9a00ff;
+}
+
+#back-btn:hover {
+    background-color: #3b0a6e; /* Change background on hover for better visibility */
+    text-shadow: 
+        0 0 5px #ff33cc, 
+        0 0 10px #ff33cc, 
+        0 0 20px #ff33cc, 
+        0 0 30px #ff33cc;
+}

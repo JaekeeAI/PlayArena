@@ -47,3 +47,22 @@ h1 {
 .player {
     background: #14c6f3;
 }
+
+#back-btn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #000000;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    box-sizing: border-box;
+    font-weight: bold;
+    padding: 5px 10px;
+    cursor: pointer;
+    z-index: 10; /* Ensure it's above other elements */
+}
+
+#back-btn:hover {
+    background-color: #4f4f4f;
+}
