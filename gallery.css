@@ -121,6 +121,19 @@ img {
     z-index: 10; /* Ensure the text is above the image */
 }
 
+/* Adjust font size for smaller screens */
+@media (max-width: 768px) {
+    .image-text {
+        font-size: 80px; 
+    }
+}
+
+@media (max-width: 480px) {
+    .image-text {
+        font-size: 50px;
+    }
+}
+
 .wrapper {
     width: min(65rem, 100% - 4rem);
     margin-inline: auto;
@@ -184,6 +197,25 @@ img {
         opacity: 0.5;
         filter: blur(5rem);
         translate: -50%;
+    }
+}
+
+/* Adjust font size for smaller screens */
+@media (max-width: 768px) {
+    .hero__title {
+        font-size: 4rem; 
+    }
+    .hero__title > span {
+        font-size: 0.6em; 
+    }
+}
+
+@media (max-width: 480px) {
+    .hero__title {
+        font-size: 2.5rem; 
+    }
+    .hero__title > span {
+        font-size: 0.7em; 
     }
 }
 

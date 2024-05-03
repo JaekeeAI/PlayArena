@@ -19,6 +19,9 @@
             <input type="radio" name="difficulty" id="medium" value="medium" checked> Medium
             <input type="radio" name="difficulty" id="hard" value="hard"> Hard
         </div>
+
+        <div id="resultDisplay">Player X's turn</div>
+        
         <div class="board">
             <div class="border-container"> <!-- New container for border -->
                 <!-- Your cells here -->
@@ -49,8 +52,7 @@
                 <button class="cell purple" data-cell-index="24"></button>
             </div>
         </div>
-        
-        <div id="resultDisplay">Player X's turn</div>
+
         <button id="restartButton" onclick="restartGame()">Restart Game</button>
     </div>
     <footer>

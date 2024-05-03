@@ -7,6 +7,23 @@ body {
   font-family: "Clear Sans", "Helvetica Neue";
 }
 
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+footer {
+    margin-top: 50px;
+    color: #776E65;
+    text-align: center;
+}
+
+
 h1 {
   font-size: 80px;
   line-height: 0.7;
@@ -204,7 +221,7 @@ h1 {
     font-weight: bold;
     height: 60px;
     line-height: 60px;
-    margin-top: 222px;
+    margin-top: 369px;
 }
 
 .game-container .game-message .lower {
@@ -258,4 +275,5 @@ h1 {
         opacity: 1;
     }
 }
+
 

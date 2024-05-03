@@ -1,7 +1,6 @@
 /* Basic reset to remove default margins and padding */
 body, header, footer {
     margin: 0;
-    padding: 0;
     display: flex;
     justify-content: center; /* Aligns children (content) in the center horizontally */
     width: 100%; /* Ensures full width */
@@ -17,7 +16,7 @@ body {
 header, footer {
     text-align: center; /* Centers text inside header and footer */
     width: 100%; /* Full width of the container */
-    padding: 20px 0; /* Padding for visual spacing */
+    padding: 10px 0; /* Padding for visual spacing */
     color: white; /* Text color for visibility */
 }
 
@@ -26,10 +25,61 @@ header, footer {
     color: white; /* Ensuring links and text in footer are visible */
 }
 
+
+#resultDisplay{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    font-weight: bold;
+    margin: 20px;
+    color: white;
+}
+
+/* Styles for the difficulty selection */
 #difficultySelection {
     margin: 30px;
-    padding: 30px;
+    padding: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+    border-radius: 10px;
+    color: white;
+}
+
+#difficultySelection label {
+    margin-right: 10px;
+    color: white; /* Matching the other text */
+}
+
+#difficultySelection input[type="radio"] {
+    margin-left: 10px;
+    margin-right: 5px;
+}
+
+#difficultySelection input[type="radio"] + label {
+    color: white; /* Matching the other text */
+}
+
+
+/* Styles for the restart button */
+#restartButton {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #3e085e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+}
+
+#restartButton:hover {
+    background-color: #250754;
+}
+
+#restartButton:active {
+    background-color: #1f064d;
 }
