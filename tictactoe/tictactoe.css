@@ -62,7 +62,7 @@
 
 @media (max-width: 768px) {
     .cell {
-        font-size: 30px; /* Adjusting font size for smaller screens */
+        font-size: 25px; /* Adjusting font size for smaller screens */
         width: 100%;
         height: 100%;
     }

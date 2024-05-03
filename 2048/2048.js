@@ -67,6 +67,42 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.key === 'ArrowRight') move('right');
     });
 
+        // Swipe detection variables
+        let touchStartX = 0;
+        let touchStartY = 0;
+        let touchEndX = 0;
+        let touchEndY = 0;
+    
+        // Function to handle swipe
+        function handleSwipe() {
+            const deltaX = touchEndX - touchStartX;
+            const deltaY = touchEndY - touchStartY;
+    
+            if (Math.abs(deltaX) > Math.abs(deltaY)) {
+                if (deltaX > 0) move('right');
+                else move('left');
+            } else {
+                if (deltaY > 0) move('down');
+                else move('up');
+            }
+        }
+    
+        // Add event listeners for touch events
+        gameBoard.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+            touchStartY = e.changedTouches[0].screenY;
+        });
+    
+        gameBoard.addEventListener('touchmove', (e) => {
+            e.preventDefault(); // Prevent scrolling while swiping
+        });
+    
+        gameBoard.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            touchEndY = e.changedTouches[0].screenY;
+            handleSwipe();
+        });
+
     function move(direction) {
         let moved = false;
         if (direction === 'up') moved = moveUp();
