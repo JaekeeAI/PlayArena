@@ -261,7 +261,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeBoard();
 });
 
-
 /*
 We use this github repository as a guide to create our 2048 game.
 https://github.com/kubowania/2048/blob/master/app.js
