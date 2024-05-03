@@ -99,7 +99,6 @@ function loop() {
     }
 
     if (stopGame) {
-        alert('Your score: ' + score + ". Close this window to play again.");
         reset();
     } else {
         dropCount++;

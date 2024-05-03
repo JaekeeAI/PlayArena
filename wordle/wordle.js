@@ -1,42 +1,40 @@
 "use strict";
-let ATTEMPTS = 6;
+window.addEventListener("load", initGame);
+// window.addEventListener('load', ()=>{console.log("loaded");});
+const ATTEMPTS = 6;
+let container;
+let cellArray;
 let wordLength = 4;
 let targetWord;
 let wordArray = [];
 let curLine = 0;
 let curCellIndex = 0; // it is the index of the char we are about to type
-let container = document.getElementsByClassName("container")[0];
 let gameState = 2; // 0 for lose, 1 for win, 2 for going
 let lettersDict = {}; // stores the letters of the tgt word
 // common 4, 5, 6 words
-let fourLettersWords = ["Able", "Bite", "Code", "Dish", "Echo", 
+const fourLettersWords = ["Able", "Bite", "Code", "Dish", "Echo", 
 "Face", "Game", "Hide", "Jump", "Kind", "Lace", "Mine", "Port",
 "Ride", "Sale", "Talk", "Wave"];
-let fiveLettersWords = ["Aware", "Brave", "Clock", "Exist", "Focus",
+const fiveLettersWords = ["Aware", "Brave", "Clock", "Exist", "Focus",
 "Leave", "Scene", "Sweet", "Store", "Rainy", "Tiger", "Paste", 
 "Mouse", "Peace", "Smile", "Trade"];
-let sixLettersWords = ["People", "Aspect", "Debate", "Border", "Driver",
+const sixLettersWords = ["People", "Aspect", "Debate", "Border", "Driver",
 "Bottle", "Effort", "Should", "Before", "Change", "Member",
 "Second", "Public", "Become", "Family", "Little"];
-let tgtWordDict = {4:fourLettersWords, 5:fiveLettersWords, 6:sixLettersWords};
-
-// testground
-initGame();
-// connect buttons to functions
-let resetButton = document.querySelectorAll("div > button")[0];
-let revealButton = document.querySelectorAll("div > button")[1];
-resetButton.addEventListener("click", resetGame);
-revealButton.addEventListener("click", revealWord);
+const tgtWordDict = {4:fourLettersWords, 5:fiveLettersWords, 6:sixLettersWords};
 
 
 
 
 function initGame()
 {
+    container = document.getElementsByClassName("container")[0];
+    cellArray = document.querySelector(".container").children;
     setRandomTargetWord();
     setLettersDicitionary();
     addCells();
     addFunctionsToKeys();
+    addFunctionsToButtons();
 }
 
 function setRandomTargetWord()
@@ -45,7 +43,7 @@ function setRandomTargetWord()
     num *= tgtWordDict[wordLength].length;
     num = Math.floor(num);
     targetWord = tgtWordDict[wordLength][num].toUpperCase();
-    console.log(targetWord);
+    // console.log(targetWord);
 }
 
 function setLettersDicitionary()
@@ -53,13 +51,12 @@ function setLettersDicitionary()
     // init a dictionary capturing the letters of the tgt word
     // character map to its frequency
     lettersDict = {};
-    for (let i=0;i<targetWord.length;i++)
+    for (let i = 0; i < targetWord.length; i++)
     {
         if (targetWord[i] in lettersDict)
         {
             lettersDict[targetWord[i]]++;
-        }
-        else
+        } else
         {
             lettersDict[targetWord[i]] = 1;
         }
@@ -76,7 +73,7 @@ function isValidWord()
 function checkWin()
 {
     // all word in current line match the tgt word
-    for (let i=0;i<wordLength;i++)
+    for (let i = 0; i < wordLength; i++)
     {
         if (wordArray[curLine * wordLength + i] !== targetWord[i])
         {
@@ -92,8 +89,7 @@ function checkLose()
     if (curLine == ATTEMPTS - 1 && gameState === 2)
     {
         return true;
-    }
-    else
+    } else
     {
         return false;
     }
@@ -111,8 +107,8 @@ function getCellColors()
     for (let i=0;i<targetWord.length;i++) {indices.push(i);}
     let copyDict = Object.assign({}, lettersDict);
     // first scan for matching letters
-    console.log(copyDict);
-    for (let i=wordLength-1;i>=0;i--)
+    // console.log(copyDict);
+    for (let i = wordLength - 1; i >= 0; i--)
     {
         if (wordArray[curLine * wordLength + i] === targetWord[i])
         {
@@ -120,8 +116,7 @@ function getCellColors()
             if (copyDict[wordArray[curLine * wordLength + i]] == 1)
             {
                 delete copyDict[wordArray[curLine * wordLength + i]];
-            }
-            else
+            } else
             {
                 copyDict[wordArray[curLine * wordLength + i]]--;
             }
@@ -129,7 +124,7 @@ function getCellColors()
         }
     }
     // second scan for mismatch but correct letters
-    for (let i=0;i<indices.length;i++)
+    for (let i = 0; i < indices.length; i++)
     {
         let num = indices[i];
         // console.log(wordArray[curLine * wordLength + num]);
@@ -139,40 +134,39 @@ function getCellColors()
             if (copyDict[wordArray[curLine * wordLength + num]] == 1)
             {
                 delete copyDict[wordArray[curLine * wordLength + num]];
-            }
-            else
+            } else
             {
                 copyDict[wordArray[curLine * wordLength + num]]--;
             }
         }
     }
     // the leftovers are gray letters
-    // console.log(colors);
     return colors;
 }
 
 function resetGame()
 {
-    // clear wordArray, set curLine and curIndex to 0
-    // get new random word, reset word dict
-    // clear the background color of all cells, set gameState back to 2
+    /* clear wordArray, set curLine and curIndex to 0
+       get new random word, reset word dict
+       clear the background color of all cells, set gameState back to 2 */
     wordLength = parseInt(getWordLength());
     setRandomTargetWord();
     setLettersDicitionary();
     wordArray = [];
-    for (let i=0;i<wordLength*ATTEMPTS;i++) {wordArray.push(" ");}
+    for (let i = 0; i < wordLength*ATTEMPTS; i++) {wordArray.push(" ");}
     curLine = 0;
     curCellIndex = 0;
     removeAllCells();
     addCells();
     removeKeyColors();
+    removeResultText();
     gameState = 2;
 }
 
 function revealWord()
 {
     gameState = 0;
-    alert("the word is " + targetWord);
+    addResultText("the word is " + targetWord);
 }
 
 function removeAllCells()
@@ -188,7 +182,7 @@ function removeAllCells()
 function removeKeyColors()
 {
     let keyArray = document.getElementsByClassName("key");
-    for (let i=0;i<keyArray.length;i++)
+    for (let i = 0; i < keyArray.length; i++)
     {
         keyArray[i].style.backgroundColor = "";
     }
@@ -197,9 +191,9 @@ function removeKeyColors()
 function addCells()
 {
     changeGridDimension();
-    for (let i=0;i<ATTEMPTS;i++)
+    for (let i = 0; i < ATTEMPTS; i++)
     {
-        for (let j=0;j<wordLength;j++)
+        for (let j = 0; j < wordLength; j++)
         {
             let elt = document.createElement("div");
             elt.classList.add("cell");
@@ -209,13 +203,23 @@ function addCells()
     }
 }
 
+function addResultText(text)
+{
+    document.getElementById("game-result").innerHTML = text;
+}
+
+function removeResultText()
+{
+    document.getElementById("game-result").innerHTML = "";
+}
+
 //
 //
 
 function getWordLength() 
 {
     let radios = document.getElementsByName("word-length");
-    for (let i=0;i<radios.length;i++)
+    for (let i = 0; i < radios.length; i++)
     {
         if (radios[i].checked)
         {
@@ -224,29 +228,7 @@ function getWordLength()
     }
 }
 
-addEventListener("keydown", function (event){
-    console.log(getWordLength());
-    // if game is concluded, then don't allow key input
-    if (gameState !== 2)
-    {
-        return;
-    }
-    // check if the key is a letter
-    let key = event.key;
-    if (key >= "a" && key <= "z")
-    {
-        key = key.toUpperCase();
-        handleLetter(key);
-    }
-    else if (key === "Enter")
-    {
-        handleEnter();
-    }
-    else if (key === "Backspace")
-    {
-        handleBackspace();
-    }
-})
+
 
 function handleLetter(key)
 {
@@ -304,11 +286,10 @@ function checkWord()
     }
     if (gameState === 1)
     {
-        alert("you win");
-    }
-    else if (gameState === 0)
+        addResultText("you win");
+    } else if (gameState === 0)
     {
-        alert("you lose");
+        addResultText("you lose");
     }
 }
 
@@ -321,17 +302,44 @@ function addFunctionsToKeys()
     }
 }
 
+function addFunctionsToButtons()
+{
+    // connect buttons to functions
+    let resetButton = document.querySelectorAll("div > button")[0];
+    let revealButton = document.querySelectorAll("div > button")[1];
+    resetButton.addEventListener("click", resetGame);
+    revealButton.addEventListener("click", revealWord);
+    addEventListener("keydown", function (event){
+        // if game is concluded, then don't allow key input
+        if (gameState !== 2)
+        {
+            return;
+        }
+        // check if the key is a letter
+        let key = event.key;
+        if (key >= "a" && key <= "z")
+        {
+            key = key.toUpperCase();
+            handleLetter(key);
+        } else if (key === "Enter")
+        {
+            handleEnter();
+        } else if (key === "Backspace")
+        {
+            handleBackspace();
+        }
+    })
+}
+
 function keyboardInputs(key)
 {
     if (key == "Enter")
     {
         handleEnter();
-    }
-    else if (key == "Backspace")
+    } else if (key == "Backspace")
     {
         handleBackspace();
-    }
-    else
+    } else
     {
         handleLetter(key);
     }
@@ -340,7 +348,7 @@ function keyboardInputs(key)
 //
 //
 
-let cellArray = document.querySelector(".container").children;
+
 function addTextToCell(index, text)
 {
     cellArray[index].innerHTML = text;
@@ -353,7 +361,7 @@ function removeTextFromCell(index)
 
 function updateCellColors(colors)
 {
-    for (let i=0;i<wordLength;i++)
+    for (let i = 0; i < wordLength; i++)
     {
         cellArray[curLine * wordLength + i].style.backgroundColor = colors[i];
     }
@@ -361,7 +369,7 @@ function updateCellColors(colors)
 
 function updateKeyColors(colors)
 {
-    for (let i=0;i<wordLength;i++)
+    for (let i = 0; i < wordLength; i++)
     {
         let character = wordArray[curLine * wordLength + i];
         let key = document.getElementsByName(character)[0];
@@ -371,8 +379,7 @@ function updateKeyColors(colors)
             {
                 key.style.backgroundColor = "green";
             }
-        }
-        else if (key.style.backgroundColor === "" || key.style.backgroundColor === "gray")
+        } else if (key.style.backgroundColor === "" || key.style.backgroundColor === "gray")
         {
             key.style.backgroundColor = colors[i];
         }
@@ -383,7 +390,7 @@ function changeGridDimension()
 {
     // reset the number of columns in the grid
     let gridTemplate = "";
-    for (let i=0;i<wordLength;i++) 
+    for (let i = 0;i < wordLength; i++) 
     {
         gridTemplate = gridTemplate + "1fr ";
     }
