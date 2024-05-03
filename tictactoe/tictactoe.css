@@ -1,10 +1,6 @@
 .board {
-    display: flex;
+    display: grid;
     grid-template-columns: repeat(5, 1fr); /* Creates a 5x5 grid */
-    gap: 0; /* Optional: remove gaps */
-    margin: 20px auto; /* Centering the grid */
-    align-items: center;
-    justify-content: center;
 }
 
 .cell {
