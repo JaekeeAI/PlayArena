@@ -1,5 +1,5 @@
 .board {
-    display: grid;
+    display: flex;
     grid-template-columns: repeat(5, 1fr); /* Creates a 5x5 grid */
     gap: 0; /* Optional: remove gaps */
     margin: 20px auto; /* Centering the grid */
@@ -10,20 +10,16 @@
 .cell {
     background-color: #160a45;
     border: 1px solid #282828;
-    font-size: 38px; /* Smaller font size for a 5x5 grid */
+    font-size: 60px; /* Smaller font size for a 5x5 grid */
     font-weight: bold;
     cursor: pointer;
     aspect-ratio: 1 / 1;
+    width: 100%;
+    color: white;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 80px; /* Smaller height for a 5x5 grid */
-    color: white;
-    overflow: hidden; /* Hide overflow */
-    text-overflow: ellipsis; /* Add ellipsis to overflowing text */
-    padding: 5px; /* Optional: add some padding */
 }
-
 
 /* Neon red shadow style */
 .cell.red {
@@ -67,7 +63,7 @@
 
 @media (max-width: 768px) {
     .cell {
-        font-size: 21px; /* Adjusting font size for smaller screens */
-        height: 50px; /* Adjusting height for smaller screens */
+        font-size: 45px; /* Adjusting font size for smaller screens */
+        width: 100%;
     }
 }
