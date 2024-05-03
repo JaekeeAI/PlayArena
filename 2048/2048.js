@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    "use strict";
     const gameBoard = document.querySelector('.grid');
     const scoreLabel = document.querySelector('#score');
     const bestLabel = document.querySelector('#best');

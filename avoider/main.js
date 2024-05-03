@@ -1,3 +1,4 @@
+"use strict";
 const cells = Array.from(document.querySelectorAll(".cell"));
 const enemyCells = cells.slice(0, 30);
 const playerCells = cells.slice(30);
