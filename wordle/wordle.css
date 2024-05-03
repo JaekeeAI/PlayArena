@@ -1,0 +1,89 @@
+h1 {
+    text-align: center;
+    margin: 10px;
+    background: linear-gradient(to right, #43eb0c, #0ccaeb,#cf23cf, #eedd44);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+body {
+    font-family: "poppins", sans-serif;
+    font-weight: 600;
+    color: rgb(65, 74, 94);
+}
+.menu-bar {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.length-select {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.length-select > input {
+    width: 20px;
+    height: 20px;
+}
+.container {
+    display: grid;
+    gap: 4px;
+    /*
+        2*border + height is cell size
+        cells * cellSize + gap * (cells-1) is container width
+    */
+    max-width: 188px;
+    margin-left: auto;
+    margin-right: auto;
+    grid-template-columns: repeat(4, 1fr);
+}
+.cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    border: 2px solid gray;
+    border-radius: 10%;
+    aspect-ratio: 1 / 1;
+    
+}
+.keyboard {
+    margin: auto;
+    margin-top: 50px;
+    max-width: 300px;
+}
+.row {
+    display: flex;
+    gap: 4px;
+    max-width: 300px;
+    margin-bottom: 2px;
+}
+.key {
+    width: 50px;
+    height: 30px;
+    background-color: rgb(220, 225, 237);
+    border-radius: 15%;
+    border-width: 0px;
+    color: rgb(65, 74, 94);
+    font-family: "poppins", sans-serif;
+    font-weight: 600;
+}
+.menu-bar > button {
+    width: 60px;
+    height: 40px;
+    background-color: rgb(220, 225, 237);
+    border-radius: 10%;
+    border-width: 0px;
+    font-weight: 600;
+    color: rgb(65, 74, 94);
+    font-family: "poppins", sans-serif;
+}
+html {
+    min-width: 300px;
+}
+
+/* 
+    https://www.w3schools.com/howto/howto_css_custom_checkbox.asp
+    https://www.geeksforgeeks.org/how-to-create-linear-gradient-text-using-html-and-css/ 
+*/
