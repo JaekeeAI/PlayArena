@@ -86,7 +86,7 @@ function aiMove() {
     if (difficulty === "easy") {
         randomComputerMove();
     } else if (difficulty === "medium") {
-        minimaxComputerMove(7);
+        minimaxComputerMove(5);
     } else if (difficulty === "hard") {
         staticEvaluatorComputerMove();
     }

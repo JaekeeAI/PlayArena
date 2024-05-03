@@ -61,3 +61,10 @@
         0 0 30px #9a00ff, 
         0 0 60px #9a00ff;
 }
+
+@media (max-width: 768px) {
+    .cell {
+        font-size: 24px; /* Adjusting font size for smaller screens */
+        height: 60px; /* Adjusting height for smaller screens */
+    }
+}
