@@ -61,7 +61,6 @@ header, footer {
     color: white; /* Matching the other text */
 }
 
-
 /* Styles for the restart button */
 #restartButton {
     margin-top: 20px;
@@ -73,6 +72,9 @@ header, footer {
     cursor: pointer;
     transition: background-color 0.3s ease;
     font-weight: bold;
+    display: block; /* Make it a block-level element */
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #restartButton:hover {
@@ -82,3 +84,4 @@ header, footer {
 #restartButton:active {
     background-color: #1f064d;
 }
+
