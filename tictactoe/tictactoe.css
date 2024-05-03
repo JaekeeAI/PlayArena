@@ -1,6 +1,8 @@
 .board {
-    display: grid;
+    display: flex;
     grid-template-columns: repeat(5, 1fr); /* Creates a 5x5 grid */
+    align-items: center;
+    justify-content: center;
 }
 
 .cell {
@@ -59,7 +61,7 @@
 
 @media (max-width: 768px) {
     .cell {
-        font-size: 45px; /* Adjusting font size for smaller screens */
+        font-size: 35px; /* Adjusting font size for smaller screens */
         width: 100%;
     }
 }
