@@ -7,6 +7,7 @@ const scoreDisplay = document.querySelector(".score");
 let dropCount, speed, score;
 let touchStartX = 0;
 let touchEndX = 0;
+let gameEnded = false;
 
 reset();
 
@@ -15,6 +16,7 @@ document.addEventListener("touchstart", handleTouchStart);
 document.addEventListener("touchend", handleTouchEnd);
 
 function handleKeyDown(e) {
+    if (gameEnded) return;
     if (!dropCount) {
         startGame();
     }
@@ -27,6 +29,7 @@ function handleTouchStart(e) {
 }
 
 function handleTouchEnd(e) {
+    if (gameEnded) return;
     touchEndX = e.changedTouches[0].screenX;
     handleGesture();
 }
@@ -54,16 +57,21 @@ function movePlayer(direction) {
 function reset() {
     dropCount = 0;
     speed = 1000;
-    score = 0;
-    scoreDisplay.innerHTML = "0";
+    gameEnded = false;
 
     cells.forEach(cell => cell.innerHTML = "");
     playerCells[1].innerHTML = '<div class="player"></div>';
 }
 
 function startGame() {
+    score = 0;
+    updateScoreDisplay();
     reset();
     loop();
+}
+
+function updateScoreDisplay() {
+    scoreDisplay.innerHTML = score;
 }
 
 function loop() {
@@ -86,22 +94,29 @@ function loop() {
             } else {
                 score++;
                 speed = Math.max(100, speed - 25);
-                scoreDisplay.innerHTML = score;
+                updateScoreDisplay();
                 enemy.remove();
             }
         }
     }
 
-    // Even drop count, add new enemy
     if (dropCount % 2 === 0) {
         const position = Math.floor(Math.random() * 3);
         enemyCells[position].innerHTML = '<div class="enemy"></div>';
     }
 
     if (stopGame) {
-        reset();
+        gameEnded = true;
+        alert(`Game Over! Your final score is ${score}.`);
+        restartGame();
     } else {
         dropCount++;
         setTimeout(loop, speed);
+    }
+}
+
+function restartGame() {
+    if (confirm("Do you want to play again?")) {
+        startGame();
     }
 }
