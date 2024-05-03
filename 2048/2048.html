@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>2048</title>
+    <link rel="stylesheet" href="2048.css">
+    <script src="2048.js" charset="utf-8"></script>
+</head>
+<body>
+
+    <div class="container">
+        <div class="info">
+            <h1>2048</h1>
+            <div class="score-board">
+                <div class="score-container" data-label="SCORE">
+                    <div id="score">0</div>
+                </div>
+                <div class="score-container" data-label="BEST">
+                    <div id="best">0</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="instructions">
+            <span id="result">Join the numbers and get to the <b>2048</b> tile!</span>
+            <button id="reset-btn">New Game</button>
+        </div>
+
+        <div class="game-container">
+            <div class="grid"></div>
+            <div class="game-message">
+                <p id="message">Game Over!</p>
+                <button id="keep-playing-btn" class="lower keep-playing-button">Keep Playing</button>
+                <button id="retry-btn">Try Again</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

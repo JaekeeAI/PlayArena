@@ -1,0 +1,261 @@
+@import url(fonts/fonts.css);
+
+body {
+  background-color: #faf8ef;
+  display: flex;
+  justify-content: center;
+  font-family: "Clear Sans", "Helvetica Neue";
+}
+
+h1 {
+  font-size: 80px;
+  line-height: 0.7;
+  color: #776E65;
+  margin: 0px;
+}
+
+.container {
+  width: 468px;
+  margin-top: 30px;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  width: 456px;
+  height: 456px;
+  background-color: #bbada0;
+  border: 7px solid #bbada0;
+  border-radius: 6px;
+  margin-top: 20px;
+}
+
+.grid div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  margin: 7px;
+  border-radius: 3px;
+  font-weight: bold;
+  background-color: #cdc1b4;
+  color: #776E65;
+}
+
+.score-board {
+    display: flex;
+    gap: 10px;
+}
+
+.score-container {
+    text-align: center;
+    flex-direction: column;
+    width: 80px;
+    height: 50px;
+    border-radius: 3px;
+    background: #bbada0;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+#score, #best {
+    font-size: clamp(16px, 2vw, 30px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: bold;
+    font-size: 21px;
+    margin-top: -5px;
+}
+
+.score-container:before {
+    content: attr(data-label); 
+    color: #eee4da;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+
+
+
+.instructions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+  
+#reset-btn {
+    text-align: center;
+    padding: 9px 18px;
+    background-color: #8f7a66;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    box-sizing: border-box;
+    font-weight: 800;
+    font-size: 15px;
+}
+
+#reset-btn:hover {
+    background-color: #a47e68;
+}
+  
+
+
+/* CSS classes for different numbers */
+.grid div[data-value=""] {
+  background-color: #cdc1b4;
+}
+
+.grid div[data-value="2"] {
+  background-color: #eee4da;
+  color: #776E65;
+  font-size: 55px;
+}
+
+.grid div[data-value="4"] {
+  background-color: #ede0c8;
+  color: #776E65;
+  font-size: 55px;
+}
+
+.grid div[data-value="8"] {
+  background-color: #f2b179;
+  color: white;
+  font-size: 55px;
+}
+
+.grid div[data-value="16"] {
+  background-color: #f59563;
+  color: white;
+  font-size: 55px;
+}
+
+.grid div[data-value="32"] {
+  background-color: #f67c5f;
+  color: white;
+  font-size: 55px;
+}
+
+.grid div[data-value="64"] {
+  background-color: #f65e3b;
+  color: white;
+  font-size: 55px;
+}
+
+.grid div[data-value="128"] {
+  background-color: #edcf72;
+  color: white;
+  font-size: 45px;
+}
+
+.grid div[data-value="256"] {
+  background-color: #edcc61;
+  color: white;
+  font-size: 45px;
+}
+
+.grid div[data-value="512"] {
+  background-color: #edc850;
+  color: white;
+  font-size: 45px;
+}
+
+.grid div[data-value="1024"] {
+  background-color: #edc53f;
+  color: white;
+  font-size: 35px;
+}
+
+.grid div[data-value="2048"] {
+  background-color: #edc22e;
+  color: white;
+  font-size: 35px;
+}
+
+
+
+.game-container .game-message {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(238, 228, 218, 0.5);
+    z-index: 100;
+    text-align: center;
+    animation: fade-in 800ms ease 1200ms;
+    animation-fill-mode: both;
+}
+
+.game-container .game-message p {
+    font-size: 60px;
+    font-weight: bold;
+    height: 60px;
+    line-height: 60px;
+    margin-top: 222px;
+}
+
+.game-container .game-message .lower {
+    display: block;
+    margin-top: 59px;
+}
+
+.game-container .game-message a,
+.game-container .game-message button {
+    display: inline-block;
+    background: #8f7a66;
+    border-radius: 3px;
+    padding: 0 20px;
+    text-decoration: none;
+    color: #f9f6f2;
+    height: 40px;
+    line-height: 42px;
+    margin-left: 9px;
+    border: none;
+    cursor: pointer;
+}
+
+.game-container .game-message a.keep-playing-button,
+.game-container .game-message button.keep-playing-button {
+    display: none;
+}
+
+.game-container .game-message.game-won {
+    background: rgba(237, 194, 46, 0.5);
+    color: #f9f6f2;
+}
+
+.game-container .game-message.game-won .keep-playing-button {
+    display: inline-block;
+}
+
+.game-container .game-message.game-won,
+.game-container .game-message.game-over {
+    display: block;
+}
+
+.grid.blurred {
+    filter: blur(5px);
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
