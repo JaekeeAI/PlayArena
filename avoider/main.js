@@ -25,12 +25,12 @@ function handleKeyDown(e) {
 }
 
 function handleTouchStart(e) {
-    touchStartX = e.changedTouches[0].screenX;
+    touchStartX = e.touches[0].clientX;
 }
 
 function handleTouchEnd(e) {
     if (gameEnded) return;
-    touchEndX = e.changedTouches[0].screenX;
+    touchEndX = e.changedTouches[0].clientX;
     handleGesture();
 }
 
@@ -42,7 +42,6 @@ function handleGesture() {
     }
 }
 
-// receive the player input of the next cell and append it to the cell's parent element
 function movePlayer(direction) {
     const player = document.querySelector(".player");
 
@@ -79,7 +78,6 @@ function loop() {
     let stopGame = false;
 
     for (let i = enemyCells.length - 1; i >= 0; i--) {
-        // update the current bottom line of cells
         const cell = enemyCells[i];
         const nextCell = cells[i + 3];
         const enemy = cell.children[0];
@@ -90,7 +88,6 @@ function loop() {
 
         nextCell.appendChild(enemy);
 
-        // at each time step check if the player is hit by enemy or not
         if (playerCells.includes(nextCell)) {
             if (nextCell.querySelector(".player")) {
                 stopGame = true;
@@ -103,13 +100,11 @@ function loop() {
         }
     }
 
-    // generate next random enemy
     if (dropCount % 2 === 0) {
         const position = Math.floor(Math.random() * 3);
         enemyCells[position].innerHTML = '<div class="enemy"></div>';
     }
 
-    // gameover, display score
     if (stopGame) {
         gameEnded = true;
         alert(`Game Over! Your final score is ${score}.`);
